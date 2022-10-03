@@ -1,0 +1,7 @@
+.main{
+    width: 1440px;
+    margin: auto;
+    @media (max-width: 414px){
+        width: 375px;
+    }
+}
