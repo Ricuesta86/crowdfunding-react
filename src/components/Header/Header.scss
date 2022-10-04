@@ -34,17 +34,23 @@
     }
     @media (max-width: 414px){
         background-image: url('./images/image-hero-mobile.jpg');
-        display: flex;
+        width: 100%;
         height: 300px;
         &__navbar{
             padding: 30px 22px;
-            &__menu{
+            &__menu{ 
+                display: flex;
+                justify-content: end;
+                align-items: center;
                 &-ul{
                     display: none;
                 }
                 &-hamburger{
                     display: block;
-                    background-color: yellow;
+                    cursor: pointer;
+                }
+                &-hamburger.hide{
+                    display: none;
                 }
             }
         }

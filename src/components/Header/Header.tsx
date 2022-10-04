@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.scss'
+import Menu from './Menu';
 const Header = () => {
+  const [show, setShow] = useState<boolean>(false);
+
+
+  const handleTogget = ()=>{
+
+  }
+
   return (
     <header className='header' >
       <nav className='header__navbar'>
@@ -11,7 +19,13 @@ const Header = () => {
             <li className='header__navbar__menu-li'><a href="#">Discover</a></li>
             <li className='header__navbar__menu-li'><a href="#">Get Started</a></li>
           </ul>
-          <img className='header__navbar__menu-hamburger'src="./images/icon-hamburger.svg" alt="hamburger" />
+          <img 
+          className={!show?'header__navbar__menu-hamburger ': ' header__navbar__menu-hamburger hide'}src="./images/icon-hamburger.svg" alt="hamburger" 
+          onClick={()=>setShow(!show)}
+          />
+          {
+           show?<Menu isShow={show}/>:null
+          }
         </div>
       </nav>
     </header>
