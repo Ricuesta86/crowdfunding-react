@@ -1,60 +1,73 @@
-.header{
-    background-image: url('./images/image-hero-desktop.jpg');
-    width: 100%;
-    height: 400px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+@use "../../sass/variables";
 
+.header {
+  background-image: url("./images/image-hero-desktop.jpg");
+  width: 100%;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 
-    &__navbar{
+  &__navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 45px 161px;
+    &__menu {
+      &-ul {
         display: flex;
-        justify-content: space-between;
-        padding:45px 161px;
-        &__menu{
-            &-ul{
-                display: flex;
-                justify-content: center;
-                list-style: none;    
-            }
-            &-li{
-                margin: 0 14px;
-                font-size: 18;
-                font-weight: 700;
-                color: white important;
-                & a{
-                    text-decoration: none;
-                    color: white;
-                }
-            }
-            &-hamburger{
-                display: none;
-            }
-            
+        justify-content: center;
+        list-style: none;
+      }
+      &-li {
+        margin: 0 14px;
+        font-size: 18;
+        font-weight: 700;
+        color: white important;
+        & a {
+          text-decoration: none;
+          color: white;
         }
+      }
+      &-hamburger {
+        display: none;
+      }
     }
-    @media (max-width: 414px){
-        background-image: url('./images/image-hero-mobile.jpg');
-        width: 100%;
-        height: 300px;
-        &__navbar{
-            padding: 30px 22px;
-            &__menu{ 
-                display: flex;
-                justify-content: end;
-                align-items: center;
-                &-ul{
-                    display: none;
-                }
-                &-hamburger{
-                    display: block;
-                    cursor: pointer;
-                }
-                &-hamburger.hide{
-                    display: none;
-                }
-            }
+  }
+  @media (max-width: 414px) {
+    background-image: url("./images/image-hero-mobile.jpg");
+    width: 100%;
+    height: 300px;
+    &__navbar {
+      padding: 30px 22px;
+      &__menu {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        &-ul {
+          display: none;
         }
-
+        &-hamburger {
+          display: block;
+          cursor: pointer;
+        }
+        &-hamburger.hide {
+          display: none;
+        }
+        &__modal {
+          position: absolute;
+          top: 83px;
+          left: 0;
+          width: 100vw;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          background-color: rgba($color: variables.$Black, $alpha: 0.4);
+          padding: 120px 0;
+          z-index: 999;
+        }
+      }
     }
+    &__navbar.close{
+      background-color: rgba($color: variables.$Black, $alpha: 0.4);
+    }
+  }
 }
- 
