@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Header.scss";
-import Menu from "./Menu";
 const Header = () => {
   const [show, setShow] = useState<boolean>(true);
 
