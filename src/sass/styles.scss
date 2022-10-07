@@ -1,27 +1,30 @@
 @use "variables";
 
-
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Commissioner', sans-serif;
-    font-size: 16px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Commissioner", sans-serif;
+  font-size: 16px;
 }
 
-.text{
-    margin: 10px;
-    color: rgba($color: variables.$DarkGray, $alpha: 1);
-    font-weight: 400;
+.text {
+  margin: 10px;
+  color: rgba($color: variables.$DarkGray, $alpha: 1);
+  font-weight: 400;
 }
 
-.btn{
-    background-color: variables.$ModerateCyan;
-    margin: 15px;
-    padding: 20px 40px;
-    border-radius: 50px;
-    color: white;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
+.btn {
+  background-color: variables.$ModerateCyan;
+  margin: 15px;
+  padding: 20px 40px;
+  border-radius: 50px;
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: variables.$DarkCyan;
+    transition: 0.3s all ease-in;
+  }
 }
