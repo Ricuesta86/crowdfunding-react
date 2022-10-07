@@ -13,7 +13,7 @@
       align-items: center;
       flex-direction: column;
       background-color: white;
-      border: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.2);
+      // border: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.2);
       border-radius: 10px;
       &__logo {
         margin: -28px 0 15px 0;
@@ -48,6 +48,7 @@
         }
         &:hover {
           color: variables.$DarkGray;
+          transition: 0.3s all ease-in;
           & > svg > g > circle {
             fill: rgba($color: variables.$DarkGray, $alpha: 1);
           }
