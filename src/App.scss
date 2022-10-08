@@ -56,6 +56,16 @@
             fill: hsl(0, 0%, 73%);
           }
         }
+        &.select {
+          color: variables.$DarkGray;
+          transition: 0.3s all ease-in;
+          & > svg > g > circle {
+            fill: rgba($color: variables.$DarkGray, $alpha: 1);
+          }
+          & > svg > g > path {
+            fill: hsl(0, 0%, 73%);
+          }
+        }
       }
     }
   }

@@ -2,10 +2,13 @@ import React from 'react'
 import Modal from '../Modal/Modal'
 import './BackThisProject.scss'
 
-const BackThisProject = () => {
+type props={
+    handleClose:any
+}
+const BackThisProject = ({handleClose}:props) => {
     return (
-        <Modal>
-            <div>
+        <Modal handleClose={handleClose}>
+            <div>                
                 <h3>Back this project</h3>
                 <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
                 <section>

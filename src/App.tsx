@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 import "./App.scss";
+import BackThisProject from "./components/BackThisProject/BackThisProject";
 import Header from "./components/Header/Header";
 
 const App = () => {
+  const [show, setShow] = useState<boolean>(false);
+  const [bookmark, setBookmark] = useState<boolean>(false);
+
+  const handleClose=()=>{
+    setShow(false);
+  }
+
+  const notify = () => {
+    setBookmark((bookmark)=>!bookmark)
+    toast.success(!bookmark?'Add bookmark.':'Remove bookmark')
+  };
+
   return (
     <main className="main">
       <Header />
@@ -21,8 +35,8 @@ const App = () => {
             strain.
           </p>
           <div className="main__mastrercraft__section__group">
-            <button className="btn">Back this project</button>
-            <button className="main__mastrercraft__section__btn">
+            <button className="btn" onClick={()=>setShow(true)}>Back this project</button>
+            <button onClick={notify} className={bookmark?"main__mastrercraft__section__btn select":"main__mastrercraft__section__btn"}>
               <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none" fill-rule="evenodd">
                   <circle
@@ -43,6 +57,7 @@ const App = () => {
             </button>
           </div>
         </section>
+        <Toaster />
         <section>
           <div>
             <div>
@@ -135,6 +150,7 @@ const App = () => {
           </div>
         </section>
       </div>
+      { show ? <BackThisProject handleClose={handleClose} />:'' }
     </main>
   );
 };
