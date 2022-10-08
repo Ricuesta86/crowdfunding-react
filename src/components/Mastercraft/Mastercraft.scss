@@ -1,0 +1,63 @@
+@use "../../sass/variables";
+
+
+.mastercraft__section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  // border: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.2);
+  border-radius: 10px;
+  &__logo {
+    margin: -28px 0 15px 0;
+  }
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 15px;
+  }
+  &__group {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border: none;
+    background-color: white;
+    color: variables.$DarkCyan;
+    font-weight: 700;
+    cursor: pointer;
+    & > svg > g > circle {
+      fill: variables.$DarkCyan;
+    }
+    & > svg > g > path {
+      fill: white;
+    }
+    &:hover {
+      color: variables.$DarkGray;
+      transition: 0.3s all ease-in;
+      & > svg > g > circle {
+        fill: rgba($color: variables.$DarkGray, $alpha: 1);
+      }
+      & > svg > g > path {
+        fill: hsl(0, 0%, 73%);
+      }
+    }
+    &.select {
+      color: variables.$DarkGray;
+      transition: 0.3s all ease-in;
+      & > svg > g > circle {
+        fill: rgba($color: variables.$DarkGray, $alpha: 1);
+      }
+      & > svg > g > path {
+        fill: hsl(0, 0%, 73%);
+      }
+    }
+  }
+}

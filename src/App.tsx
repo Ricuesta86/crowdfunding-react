@@ -1,84 +1,24 @@
 import React, { useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
 import "./App.scss";
-import BackThisProject from "./components/BackThisProject/BackThisProject";
+import Backer from "./components/Backer/Backer";
 import Header from "./components/Header/Header";
+import Mastercraft from "./components/Mastercraft/Mastercraft";
+
+const data={
+  totalBacked:89914,
+  totalBackers:5007,
+  backed:100000,
+  dayLeft:56,
+}
 
 const App = () => {
-  const [show, setShow] = useState<boolean>(false);
-  const [bookmark, setBookmark] = useState<boolean>(false);
-
-  const handleClose=()=>{
-    setShow(false);
-  }
-
-  const notify = () => {
-    setBookmark((bookmark)=>!bookmark)
-    toast.success(!bookmark?'Add bookmark.':'Remove bookmark')
-  };
-
   return (
     <main className="main">
       <Header />
-      <div className="main__mastrercraft">
-        <section className="main__mastrercraft__section">
-          <img
-            className="main__mastrercraft__section__logo"
-            src="./images/logo-mastercraft.svg"
-            alt="Logo mastercraft"
-          />
-          <h1 className="main__mastrercraft__section__title">
-            Mastercraft Bamboo Monitor Riser
-          </h1>
-          <p className="text">
-            A beautiful & handcrafted monitor stand to reduce neck and eye
-            strain.
-          </p>
-          <div className="main__mastrercraft__section__group">
-            <button className="btn" onClick={()=>setShow(true)}>Back this project</button>
-            <button onClick={notify} className={bookmark?"main__mastrercraft__section__btn select":"main__mastrercraft__section__btn"}>
-              <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" fill-rule="evenodd">
-                  <circle
-                    className="main__mastrercraft__section__btn__cicle"
-                    fill="#2F2F2F"
-                    cx="28"
-                    cy="28"
-                    r="28"
-                  />
-                  <path
-                    className="main__mastrercraft__section__btn__path"
-                    fill="#B1B1B1"
-                    d="M23 19v18l5-5.058L33 37V19z"
-                  />
-                </g>
-              </svg>
-              Bookmark
-            </button>
-          </div>
-        </section>
-        <Toaster />
-        <section>
-          <div>
-            <div>
-              <h2>$89,914</h2>
-              <p>of $100,000 backed</p>
-            </div>
-            <div className="line"></div>
-            <div>
-              <h2>5,007</h2>
-              <p>total backers</p>
-            </div>
-            <div className="line"></div>
-            <div>
-              <h2>56</h2>
-              <p>days left</p>
-            </div>
-          </div>
-          <div className="barra-progreso"></div>
-        </section>
-
-        <section className="no-border ">
+      <div className="main__section">
+        <Mastercraft />
+        <Backer />
+        <section className="no-border">
           <h3>About this project</h3>
           <p>
             {" "}
@@ -150,7 +90,6 @@ const App = () => {
           </div>
         </section>
       </div>
-      { show ? <BackThisProject handleClose={handleClose} />:'' }
     </main>
   );
 };
