@@ -1,28 +1,34 @@
 import React from 'react'
+import { dataType } from '../../type';
 import './Backer.scss';
+import ProgressBar from './ProgressBar';
 
-const Backer = () => {
+type props = {
+    dataInfo: dataType;
+}
+
+const Backer = ({ dataInfo }: props) => {
     return (
-        <>       
-        <section className="backer">
-            <div>
+        <>
+            <section className="backer">
                 <div>
-                    <h2>$89,914</h2>
-                    <p>of $100,000 backed</p>
+                    <div>
+                        <h2>${dataInfo.backed}</h2>
+                        <p>of ${dataInfo.totalBacked} backed</p>
+                        <div className="line"></div>
+                    </div>
+                    <div>
+                        <h2>{dataInfo.totalBackers}</h2>
+                        <p>total backers</p>
+                        <div className="line"></div>
+                    </div>
+                    <div>
+                        <h2>{dataInfo.dayLeft}</h2>
+                        <p>days left</p>
+                    </div>
                 </div>
-                <div className="line"></div>
-                <div>
-                    <h2>5,007</h2>
-                    <p>total backers</p>
-                </div>
-                <div className="line"></div>
-                <div>
-                    <h2>56</h2>
-                    <p>days left</p>
-                </div>
-            </div>
-            <div className="barra-progreso"></div>
-        </section>
+                <ProgressBar inicial={dataInfo.backed} total={dataInfo.totalBacked} />
+            </section>
         </>
     )
 }

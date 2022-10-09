@@ -1,23 +1,21 @@
 import React, { useState } from "react";
+import api from "./api";
 import "./App.scss";
 import Backer from "./components/Backer/Backer";
 import Header from "./components/Header/Header";
 import Mastercraft from "./components/Mastercraft/Mastercraft";
+import type { dataType } from './type';
 
-const data={
-  totalBacked:89914,
-  totalBackers:5007,
-  backed:100000,
-  dayLeft:56,
-}
+
 
 const App = () => {
+  const [data, setData] = useState<dataType>(api.data);
   return (
     <main className="main">
       <Header />
       <div className="main__section">
         <Mastercraft />
-        <Backer />
+        <Backer dataInfo={data}/>
         <section className="no-border">
           <h3>About this project</h3>
           <p>
