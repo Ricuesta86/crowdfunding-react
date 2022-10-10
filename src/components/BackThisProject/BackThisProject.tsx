@@ -3,13 +3,15 @@ import Modal from '../Modal/Modal'
 import './BackThisProject.scss'
 
 type props={
-    handleClose:any
+    handleClose:any;
+    pledge:number | undefined;
+
 }
-const BackThisProject = ({handleClose}:props) => {
+const BackThisProject = ({handleClose,pledge}:props) => {
     return (
         <Modal handleClose={handleClose}>
             <div>                
-                <h3>Back this project</h3>
+                <h3>Back this project {pledge}</h3>
                 <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
                 <section>
                     <div>

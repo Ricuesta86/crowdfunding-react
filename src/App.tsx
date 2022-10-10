@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import api from "./api";
 import "./App.scss";
 import Backer from "./components/Backer/Backer";
+import GetStarted from "./components/GetStarted/GetStarted";
 import Header from "./components/Header/Header";
 import Mastercraft from "./components/Mastercraft/Mastercraft";
 import type { dataType } from './type';
+import { product } from './type';
 
 
 
 const App = () => {
-  const [data, setData] = useState<dataType>(api.data);
+  const [data, setData] = useState<dataType>(api.data.data);
+  const [products, setProducts] = useState<product[]>(api.data.list||[]);
   return (
     <main className="main">
       <Header />
@@ -30,63 +33,7 @@ const App = () => {
             stored under the stand.
           </p>
         </section>
-
-        <section>
-          <div>
-            <h3>Bamboo Stand</h3>
-            <p>Pledge $25 or more</p>
-          </div>
-          <p>
-            You get an ergonomic stand made of natural bamboo. You've helped us
-            launch our promotional campaign, and youâ€™ll be added to a special
-            Backer member list.
-          </p>
-
-          <div>
-            <h4>
-              101 <span className="h4--span">left</span>
-            </h4>
-            <button>Select Reward</button>
-          </div>
-        </section>
-
-        <section>
-          <div>
-            <h3>Black Edition Stand</h3>
-            <p>Pledge $75 or more</p>
-          </div>
-          <p>
-            You get a Black Special Edition computer stand and a personal thank
-            you. Youâ€™ll be added to our Backer member list. Shipping is
-            included.
-          </p>
-
-          <div>
-            <h4>
-              64 <span className="h4--span">left</span>
-            </h4>
-            <button>Select Reward</button>
-          </div>
-        </section>
-
-        <section>
-          <div>
-            <h3>Mahogany Special Edition</h3>
-            <p>Pledge $200 or more</p>
-          </div>
-          <p>
-            You get two Special Edition Mahogany stands, a Backer T-Shirt, and a
-            personal thank you. Youâ€™ll be added to our Backer member list.
-            Shipping is included.
-          </p>
-
-          <div>
-            <h4>
-              0 <span className="h4--span">left</span>
-            </h4>
-            <button>Select Reward</button>
-          </div>
-        </section>
+        <GetStarted products={products}/>        
       </div>
     </main>
   );
