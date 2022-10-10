@@ -56,7 +56,7 @@ const Mastercraft = () => {
                 </div>
             </section>
             <Toaster />
-            { show ? <BackThisProject handleClose={handleClose} pledge={undefined}/>:'' }
+            { show ? <BackThisProject handleClose={handleClose} pledgeProp={undefined}/>:'' }
         </>
     )
 }

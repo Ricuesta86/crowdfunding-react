@@ -24,7 +24,7 @@ const GetStarted = ({ products }: props) => {
             <section className='getStarted'>
                 {
                     products.map((product, index) => (
-                        <div key={index} className=''>
+                        <div key={index} className={product.pledge ===0?'disable':''}>
                             <div>
                                 <h3>{product.title}</h3>
                                 <p>"Pledge ${product.pledge} or more"</p>
@@ -43,7 +43,7 @@ const GetStarted = ({ products }: props) => {
                 }
 
             </section>
-            { show ? <BackThisProject handleClose={handleClose} pledge={pledge}/>:'' }
+            { show ? <BackThisProject handleClose={handleClose} pledgeProp={pledge}/>:'' }
         </>
     )
 }
