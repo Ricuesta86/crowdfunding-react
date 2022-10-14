@@ -2,7 +2,7 @@ export type dataType ={
     totalBacked:number;
     totalBackers:number,
     backed:number,
-    dayLeft:number,    
+    dayLeft:number,   
 }
 
 export type product ={
@@ -10,4 +10,9 @@ export type product ={
     pledge: number,
     text: string
     amount: number,
+}
+
+export type action = {
+    type:string;
+    payload:object;
 }

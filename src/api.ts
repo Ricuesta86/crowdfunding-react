@@ -1,12 +1,13 @@
+import { product } from './type';
 const api = {
   data: {
-    data: {
+    data:{
       backed: 89914,
       totalBackers: 5007,
       totalBacked: 100000,
       dayLeft: 56,
-    },
-    list: () => [
+  },
+    list: ():product[] => [
       {
         title: "Bamboo Stand",
         pledge: 25,
