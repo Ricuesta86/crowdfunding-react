@@ -1,38 +1,29 @@
-
+import { createSlice } from '@reduxjs/toolkit'
 import api from '../api';
-import type {dataType} from '../type';
 
 
-const initialState:dataType = api.data.data;
-  
-export const actionAdded = {
-    type:'@dataType/added',
-    payload:{
-        backed:0
-    }
-}
+const mastercraftSlice = createSlice({
+    name: 'mastercraft',
+    initialState: api.data.data,
+    reducers: {
+        backedAdded(state,action){
+            // state={
+            //     ...state,
+            //     backed:state.backed+action.payload.backed
+            // }
+            state.backed+=action.payload.backed
+        },
+        backersIncremented(state,action){
+            // state={
+            //     ...state,
+            //     totalBackers:state.totalBackers+1
+            // }
+            state.totalBackers+=1
+        }
 
-export const actionIncremented = {
-    type:'@dataType/incremented',
-}
-
-
-export default function mastercraftReducer(state: dataType=initialState,action:any){
-
-    switch (action.type) {
-        case '@dataType/added':
-            return{
-                ...state,
-                backed:state.backed+action.payload.backed
-            }
-    
-        case'@dataType/incremented':
-            return{
-                ...state,
-                total:state.totalBackers+1
-            }
-        default:
-            return state;
     }
 
-}
+})
+
+export const {backedAdded,backersIncremented} = mastercraftSlice.actions;
+export default mastercraftSlice.reducer;
