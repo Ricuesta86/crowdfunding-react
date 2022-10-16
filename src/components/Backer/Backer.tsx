@@ -9,7 +9,7 @@ const Backer = () => {
     return (
         <>
             <section className="backer">
-                <div>
+                <div className='backed__group'>
                     <div>
                         <h2>${data.backed}</h2>
                         <p>of ${data.totalBacked} backed</p>
