@@ -7,18 +7,18 @@ import Header from "./components/Header/Header";
 import Mastercraft from "./components/Mastercraft/Mastercraft";
 import type { dataType } from './type';
 import { product } from './type';
+import { useAppSelector } from './reducers/hook';
 
 
 
 const App = () => {
-  const [data, setData] = useState<dataType>(api.data.data);
-  const [products, setProducts] = useState<product[]>(api.data.list||[]);
+ 
   return (
     <main className="main">
       <Header />
       <div className="main__section">
         <Mastercraft />
-        <Backer dataInfo={data}/>
+        <Backer />
         <section className="no-border">
           <h3>About this project</h3>
           <p>
@@ -33,7 +33,7 @@ const App = () => {
             stored under the stand.
           </p>
         </section>
-        <GetStarted products={products}/>        
+        <GetStarted />        
       </div>
     </main>
   );

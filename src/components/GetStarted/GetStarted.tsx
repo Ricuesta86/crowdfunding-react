@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { dataType, product } from '../../type';
+import { useState } from 'react';
+import { useAppSelector } from '../../reducers/hook';
 import BackThisProject from '../BackThisProject/BackThisProject';
 import './GetStarted';
-type props = {
-    products: product[];
-}
 
-const GetStarted = ({ products }: props) => {
+
+const GetStarted = () => {
+    const products = useAppSelector(state=>state.pledge);
     const [show, setShow] = useState<boolean>(false);
     const [pledge, setPledge] = useState<number | undefined>(undefined);
 
