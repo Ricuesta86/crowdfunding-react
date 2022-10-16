@@ -5,6 +5,9 @@ import { product } from '../../type';
 import Modal from '../Modal/Modal'
 import Thanks from '../Thanks/Thanks';
 import './BackThisProject.scss'
+import { useAppSelector,useAppDispatch } from '../../reducers/hook';
+import { backedAdded, backersIncremented } from '../../reducers/mastercraftReducer';
+import { pledgeDecremented } from '../../reducers/pledgeReducer';
 
 type props = {
     handleClose: any;
@@ -12,14 +15,19 @@ type props = {
 
 }
 const BackThisProject = ({ handleClose, pledgeProp }: props) => {
+    const products = useAppSelector(state=>state.pledge);
+    const dispatch = useAppDispatch();
     const [pledge, setPledge] = useState<number | undefined>(pledgeProp);
     const [text, setText] = useState<number>(pledgeProp ? pledgeProp : 0);
     const [showThanks, setShowThanks] = useState(false);
-    const [products, setProducts] = useState<product[]>(api.data.list || []);
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
         if (event.target.pledge.value >= event.target.price.value) {
+            let backed = Number(event.target.pledge.value);
+            dispatch(backedAdded({backed}));
+            dispatch(backersIncremented);
+            dispatch(pledgeDecremented({pledge}));
             setShowThanks(true);
         }
 
