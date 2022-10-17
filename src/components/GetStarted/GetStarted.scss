@@ -1,0 +1,19 @@
+@use "../../sass/variables";
+
+.getstarted {
+  margin-top: 40px;
+  &__enable {
+    margin: 25px 0;
+    padding: 30px 20px;
+    border: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.5);
+    border-radius: 10px;
+  }
+  &__group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__disable {
+    border: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.2);
+  }
+}

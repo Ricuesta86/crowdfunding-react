@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAppSelector } from '../../reducers/hook';
 import BackThisProject from '../BackThisProject/BackThisProject';
-import './GetStarted';
+import './GetStarted.scss';
 
 
 const GetStarted = () => {
@@ -20,22 +20,22 @@ const GetStarted = () => {
 
     return (
         <>
-            <section className='getStarted'>
+            <section className='getstarted'>
                 {
                     products.map((product, index) => (
-                        <div key={index} className={product.pledge ===0?'disable':''}>
-                            <div>
-                                <h3>{product.title}</h3>
-                                <p>"Pledge ${product.pledge} or more"</p>
+                        <div key={index} className={product.pledge ===0?'getstarted__disable':'getstarted__enable'}>
+                            <div className='getstarted__group'>
+                                <h3 className='getstarted__title'>{product.title}</h3>
+                                <p className='getstarted__subtitle'>Pledge ${product.pledge} or more</p>
                             </div>
-                            <p>{product.text}
+                            <p className='text'>{product.text}
                             </p>
 
-                            <div>
-                                <h4>
-                                    {product.amount} <span className="h4--span"> left</span>
+                            <div className='getstarted__group'>
+                                <h4 className='getstarted__number'>
+                                    {product.amount} <span className="text"> left</span>
                                 </h4>
-                                <button onClick={()=>handleSelectReward(product.pledge)}>Select Reward</button>
+                                <button className='btn' onClick={()=>handleSelectReward(product.pledge)}>Select Reward</button>
                             </div>
                         </div>
                     ))
