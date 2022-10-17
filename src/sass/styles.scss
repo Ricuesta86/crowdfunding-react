@@ -12,8 +12,9 @@ body{
 }
 
 .text {
-  margin: 10px;
-  color: rgba($color: variables.$DarkGray, $alpha: 1);
+  margin: 20px 0;
+  line-height: 25px;
+  color: rgba($color: variables.$DarkGray, $alpha: 0.9);
   font-weight: 400;
 }
 
