@@ -1,16 +1,18 @@
 import React from 'react';
-import './modal.scss';
+import './Modal.scss';
 
-type props={
-    children?:React.ReactNode;
-    handleClose:()=>VoidFunction;
+type props = {
+  children?: React.ReactNode;
+  handleClose: () => VoidFunction;
 }
-const Modal = ({children,handleClose}:props) => {
+const Modal = ({ children, handleClose }: props) => {
   return (
-    <div className='modal'>
-      <img onClick={()=>handleClose()} className='modal__close' src="./images/icon-close-modal.svg" alt="Close modal" />
-      {children}
+    <div className='modal' style={{display:'block'}}>
+      <div className="modal__container">
+        <img onClick={() => handleClose()} className='modal__container__close' src="./images/icon-close-modal.svg" alt="Close modal" />
+        {children}
       </div>
+    </div>
   )
 }
 
