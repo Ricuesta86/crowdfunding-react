@@ -26,7 +26,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
         if (event.target.pledge.value >= event.target.price.value) {
             let backed = Number(event.target.pledge.value);
             dispatch(backedAdded({backed}));
-            dispatch(backersIncremented);
+            dispatch(backersIncremented({}));
             dispatch(pledgeDecremented({pledge}));
             setShowThanks(true);
         }
