@@ -35,8 +35,12 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
   };
 
   const handleSelect = (value: number) => {
-    setPledge(value);
-    setText(value);
+    if (pledge === value) {
+      setPledge(undefined)
+    } else {
+      setPledge(value);
+      setText(value);
+    }
   };
 
   const handleChange = (event: any) => {
@@ -51,7 +55,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
             Want to support us in bringing Mastercraft Bamboo Monitor Riser out
             in the world?
           </p>
-          <div className="thisproject__pledge">
+          <div className="thisproject__pledge border">
             <div>Pledge with no reward</div>
             <p className="text">
               Choose to support us without a reward if you simply believe in our
@@ -59,40 +63,42 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
               updates via email.
             </p>
           </div>
+
+
+          <section className="pledge">
+            {products.map((product, index) => (
+              <div key={index} className="pledge__content border">
+                <div className="pledge__group">
+                  <div onClick={() => handleSelect(product.pledge)} className="pledge__content__checked">
+                    <h3 className="plege__content__title">{product.title}</h3>
+                    <p className="plege__content__subtitle">"Pledge ${product.pledge} or more"</p>
+                  </div>
+                  <div className="pledge">
+                    <h4>
+                      {product.amount} <span className="h4--span"> left</span>
+                    </h4>
+                  </div>
+                </div>
+                <p className="text">{product.text}</p>
+
+                <div className="line"></div>
+                <div style={product.pledge !== pledge ? { display: "none" } : {}}>
+                  <form onSubmit={(event) => handleSubmit(event)}>
+                    <p>Enter your pledge</p>
+                    <NumericFormat
+                      value={text}
+                      name="pledge"
+                      onChange={(event) => handleChange(event)}
+                      thousandSeparator={true}
+                    />
+                    <input type={"hidden"} value={product.pledge} name="price" />
+                    <button>Continue</button>
+                  </form>
+                </div>
+              </div>
+            ))}
+          </section>
         </div>
-
-        {/* <!-- Selection modal start --> */}
-        <section>
-          {products.map((product, index) => (
-            <div key={index} className="">
-              <div onClick={() => handleSelect(product.pledge)}>
-                <h3>{product.title}</h3>
-                <p>"Pledge ${product.pledge} or more"</p>
-              </div>
-              <p>{product.text}</p>
-
-              <div>
-                <h4>
-                  {product.amount} <span className="h4--span"> left</span>
-                </h4>
-              </div>
-              <div className="line"></div>
-              <div style={product.pledge !== pledge ? { display: "none" } : {}}>
-                <form onSubmit={(event) => handleSubmit(event)}>
-                  <p>Enter your pledge</p>
-                  <NumericFormat
-                    value={text}
-                    name="pledge"
-                    onChange={(event) => handleChange(event)}
-                    thousandSeparator={true}
-                  />
-                  <input type={"hidden"} value={product.pledge} name="price" />
-                  <button>Continue</button>
-                </form>
-              </div>
-            </div>
-          ))}
-        </section>
       </Modal>
       {showThanks ? <Thanks /> : ""}
     </>
