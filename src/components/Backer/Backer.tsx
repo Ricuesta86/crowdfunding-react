@@ -1,6 +1,5 @@
 import { useAppSelector } from '../../reducers/hook';
 import { NumericFormat } from 'react-number-format';
-import { dataType } from '../../type';
 import './Backer.scss';
 import ProgressBar from './ProgressBar';
 

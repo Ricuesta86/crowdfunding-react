@@ -1,13 +1,8 @@
-import React, { useState } from "react";
-import api from "./api";
 import "./App.scss";
 import Backer from "./components/Backer/Backer";
 import GetStarted from "./components/GetStarted/GetStarted";
 import Header from "./components/Header/Header";
 import Mastercraft from "./components/Mastercraft/Mastercraft";
-import type { dataType } from './type';
-import { product } from './type';
-import { useAppSelector } from './reducers/hook';
 
 
 
