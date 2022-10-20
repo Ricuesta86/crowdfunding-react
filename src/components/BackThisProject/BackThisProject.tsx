@@ -67,7 +67,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
 
           <section className="pledge">
             {products.map((product, index) => (
-              <div key={index} className="pledge__content border">
+              <div key={index} className={product.pledge !== pledge ? "pledge__content border" : "pledge__content__select border"}>
                 <div className="pledge__group">
                   <div onClick={() => handleSelect(product.pledge)} className="pledge__content__checked">
                     <h3 className="pledge__content__title">{product.title}</h3>
@@ -81,18 +81,23 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
                 </div>
                 <p className="text">{product.text}</p>
 
-                <div className="line"></div>
                 <div style={product.pledge !== pledge ? { display: "none" } : {}}>
-                  <form onSubmit={(event) => handleSubmit(event)}>
-                    <p>Enter your pledge</p>
-                    <NumericFormat
-                      value={text}
-                      name="pledge"
-                      onChange={(event) => handleChange(event)}
-                      thousandSeparator={true}
-                    />
-                    <input type={"hidden"} value={product.pledge} name="price" />
-                    <button>Continue</button>
+                  <div className="pledge__line"></div>
+                  <form className="pledge__form" onSubmit={(event) => handleSubmit(event)}>
+                    <p className="pledge__form__text text">Enter your pledge</p>
+                    <div className="pledge__group">
+                      <div className="pledge__form__currency-wrap">
+                        <span className="pledge__form__currency-code">$</span>
+                        <NumericFormat
+                          value={text}
+                          name="pledge"
+                          onChange={(event) => handleChange(event)}
+                          className="pledge__form__currency-input"
+                        />
+                      </div>
+                      <button className="btn">Continue</button>
+                      <input type={"hidden"} value={product.pledge} name="price" />
+                    </div>
                   </form>
                 </div>
               </div>
