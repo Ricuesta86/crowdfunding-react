@@ -67,9 +67,11 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
 
           <section className="pledge">
             {products.map((product, index) => (
-              <div key={index} className={product.pledge !== pledge ? "pledge__content border" : "pledge__content__select border"}>
+              <div key={index} className={
+                product.amount === 0 ? "pledge__content__disable border " 
+               :product.pledge !== pledge ? "pledge__content border " : "pledge__content__select border"}>
                 <div className="pledge__group">
-                  <div onClick={() => handleSelect(product.pledge)} className="pledge__content__checked">
+                  <div  onClick={product.amount === 0 ? ()=>{return;}:() => handleSelect(product.pledge)} className="pledge__content__checked">
                     <h3 className="pledge__content__title">{product.title}</h3>
                     <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
                   </div>

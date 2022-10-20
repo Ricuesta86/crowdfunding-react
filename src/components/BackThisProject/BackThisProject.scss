@@ -4,12 +4,12 @@
   &__title {
     font-size: 1.8rem;
   }
-  &__checked{
+  &__checked {
     font-size: 1.1rem;
     font-weight: 700;
-    transition: 0.3s color ease ;
-    &:hover{
-    color: variables.$ModerateCyan;
+    transition: 0.3s color ease;
+    &:hover {
+      color: variables.$ModerateCyan;
     }
   }
 }
@@ -20,31 +20,34 @@
     justify-content: space-between;
   }
 
-  &__content{
-    &__select{
-        border: 2px solid rgba($color: variables.$DarkCyan, $alpha: 1) !important;
+  &__content {
+    &__disable{
+        opacity: 0.5;
     }
-    &__checked{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer; 
+    &__select {
+      border: 2px solid rgba($color: variables.$DarkCyan, $alpha: 1) !important;
     }
-    &__title{
-        font-size: 1.1rem;
-        font-weight: 700;
-        transition: 0.3s color ease ;
-        &:hover{
+    &__checked {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    &__title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: 0.3s color ease;
+      &:hover {
         color: variables.$ModerateCyan;
-        }
+      }
     }
-    &__subtitle{
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: variables.$ModerateCyan;
+    &__subtitle {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: variables.$ModerateCyan;
     }
   }
-  &__number{
+  &__number {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -52,37 +55,37 @@
     font-size: 2.2rem;
     font-weight: 700;
   }
-  &__line{
+  &__line {
     width: 100%;
     margin: 20px 0;
     border-bottom: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.2);
   }
-  &__form{
+  &__form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    &__currency-wrap{
-        position:relative;  
+    &__currency-wrap {
+      position: relative;
     }
-    &__currency-code{
-        position:absolute;
-		left:30px;
-		top:18px;
-        font-size: 1.2rem;  
-        font-weight: 700;
-        color:rgba($color: variables.$DarkGray, $alpha: 0.8);      
+    &__currency-code {
+      position: absolute;
+      left: 30px;
+      top: 18px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: rgba($color: variables.$DarkGray, $alpha: 0.8);
     }
-    &__currency-input{
-        width: 120px;
-        padding: 18px 20px 18px 50px;
-        border-radius: 50px;
-        border: 2px solid rgba($color: variables.$DarkCyan, $alpha: 1);    
-        font-weight: 700;  
-        margin-right: 15px; 
-        &:focus{
-            outline: none;
-        }
+    &__currency-input {
+      width: 120px;
+      padding: 18px 20px 18px 50px;
+      border-radius: 50px;
+      border: 2px solid rgba($color: variables.$DarkCyan, $alpha: 1);
+      font-weight: 700;
+      margin-right: 15px;
+      &:focus {
+        outline: none;
+        border: 3px solid rgba($color: variables.$DarkCyan, $alpha: 1);
+      }
     }
-
   }
 }
