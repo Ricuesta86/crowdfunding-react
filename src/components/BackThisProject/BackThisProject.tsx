@@ -25,13 +25,14 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    if (event.target.pledge.value >= event.target.price.value) {
-      let backed = Number(event.target.pledge.value);
-      dispatch(backedAdded({ backed }));
+    let nPledge=Number(event.target.pledge.value);
+    let nPrice=Number(event.target.price.value);
+    if (nPledge >= nPrice) {
+      dispatch(backedAdded({ backed:nPledge }));
       dispatch(backersIncremented({}));
       dispatch(pledgeDecremented({ pledge }));
+      // handleClose();
       setShowThanks(true);
-      handleClose();
     }
   };
 
@@ -47,81 +48,92 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
   const handleChange = (event: any) => {
     setText(event.target.value);
   };
+
+  const handleNoReward = () =>{
+    dispatch(backersIncremented({}));
+    setShowThanks(true);
+  }
+
   return (
     <>
-      <Modal close handleClose={handleClose}>
-        <div className="thisproject">
-          <h3 className="thisproject__title">Back this project</h3>
-          <p className="text">
-            Want to support us in bringing Mastercraft Bamboo Monitor Riser out
-            in the world?
-          </p>
-          <div className="thisproject__pledge border">
-            <div className="group">
-              <div className="thisproject__circle">
-                <div className="thisproject__circle-select"></div>
-              </div>
-              <div className="thisproject__checked">Pledge with no reward</div>
-            </div>
-            <p className="thisproject__text text">
-              Choose to support us without a reward if you simply believe in our
-              project. As a backer, you will be signed up to receive product
-              updates via email.
+      {showThanks ? (
+        <Modal handleClose={handleClose} >
+          <Thanks handleClose={handleClose} />
+        </Modal>
+      ) : (
+        <Modal close handleClose={handleClose}>
+          <div className="thisproject">
+            <h3 className="thisproject__title">Back this project</h3>
+            <p className="text">
+              Want to support us in bringing Mastercraft Bamboo Monitor Riser out
+              in the world?
             </p>
-          </div>
-
-
-          <section className="pledge">
-            {products.map((product, index) => (
-              <div key={index} className={
-                product.amount === 0 ? "pledge__content__disable border "
-                  : product.pledge !== pledge ? "pledge__content border " : "pledge__content__select border"}>
-                <div className="pledge__group select">
-                  <div>
-                    <div className="pledge__content__circle" onClick={product.amount === 0 ? () => { return; } : () => handleSelect(product.pledge)}>
-                      <div className={product.pledge !== pledge ? "" : "pledge__content__circle-select"}></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="pledge__group">
-                      <div onClick={product.amount === 0 ? () => { return; } : () => handleSelect(product.pledge)} className="pledge__content__checked">
-                        <h3 className="pledge__content__title">{product.title}</h3>
-                        <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
-                      </div>
-                      <div className="pledge">
-                        <h4 className="pledge__number">
-                          {product.amount} <span className="text"> left</span>
-                        </h4>
-                      </div>
-                    </div>
-                    <p className="text">{product.text}</p>
-                  </div>
+            <div className="thisproject__pledge border">
+              <div className="group" onClick={()=>handleNoReward()}>
+                <div className="thisproject__circle">
+                  <div className="thisproject__circle-select"></div>
                 </div>
-                <div style={product.pledge !== pledge ? { display: "none" } : {}}>
-                  <div className="pledge__line"></div>
-                  <form className="pledge__form" onSubmit={(event) => handleSubmit(event)}>
-                    <p className="pledge__form__text text">Enter your pledge</p>
-                    <div className="pledge__group">
-                      <div className="pledge__form__currency-wrap">
-                        <span className="pledge__form__currency-code">$</span>
-                        <NumericFormat
-                          value={text}
-                          name="pledge"
-                          onChange={(event) => handleChange(event)}
-                          className="pledge__form__currency-input"
-                        />
-                      </div>
-                      <button className="btn">Continue</button>
-                      <input type={"hidden"} value={product.pledge} name="price" />
-                    </div>
-                  </form>
-                </div>
+                <div className="thisproject__checked">Pledge with no reward</div>
               </div>
-            ))}
-          </section>
-        </div>
-      </Modal>
-      {showThanks ? <Thanks /> : ""}
+              <p className="thisproject__text text">
+                Choose to support us without a reward if you simply believe in our
+                project. As a backer, you will be signed up to receive product
+                updates via email.
+              </p>
+            </div>
+
+
+            <section className="pledge">
+              {products.map((product, index) => (
+                <div key={index} className={
+                  product.amount === 0 ? "pledge__content__disable border "
+                    : product.pledge !== pledge ? "pledge__content border " : "pledge__content__select border"}>
+                  <div className="pledge__group select">
+                    <div>
+                      <div className="pledge__content__circle" onClick={product.amount === 0 ? () => { return; } : () => handleSelect(product.pledge)}>
+                        <div className={product.pledge !== pledge ? "" : "pledge__content__circle-select"}></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="pledge__group">
+                        <div onClick={product.amount === 0 ? () => { return; } : () => handleSelect(product.pledge)} className="pledge__content__checked">
+                          <h3 className="pledge__content__title">{product.title}</h3>
+                          <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
+                        </div>
+                        <div className="pledge">
+                          <h4 className="pledge__number">
+                            {product.amount} <span className="text"> left</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <p className="text">{product.text}</p>
+                    </div>
+                  </div>
+                  <div style={product.pledge !== pledge ? { display: "none" } : {}}>
+                    <div className="pledge__line"></div>
+                    <form className="pledge__form" onSubmit={(event) => handleSubmit(event)}>
+                      <p className="pledge__form__text text">Enter your pledge</p>
+                      <div className="pledge__group">
+                        <div className="pledge__form__currency-wrap">
+                          <span className="pledge__form__currency-code">$</span>
+                          <NumericFormat
+                            value={text}
+                            name="pledge"
+                            onChange={(event) => handleChange(event)}
+                            className="pledge__form__currency-input"
+                          />
+                        </div>
+                        <button className="btn">Continue</button>
+                        <input type={"hidden"} value={product.pledge} name="price" />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              ))}
+            </section>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };
