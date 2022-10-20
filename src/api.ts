@@ -27,6 +27,12 @@ const api = {
         amount: 0,
       },
     ],
+    amount:{
+      amount25:101,
+      amount75:64,
+      amount200:0,
+
+    }
   },
 };
 

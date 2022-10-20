@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NumericFormat } from "react-number-format";
 import api from "../../api";
-import { product } from "../../type";
+import { amount, product } from "../../type";
 import Modal from "../Modal/Modal";
 import Thanks from "../Thanks/Thanks";
 import "./BackThisProject.scss";
@@ -17,11 +17,13 @@ type props = {
   pledgeProp: number | undefined;
 };
 const BackThisProject = ({ handleClose, pledgeProp }: props) => {
-  const products = useAppSelector((state) => state.pledge);
+  const [products, setProducts] = useState<product[]|[]>(api.data.list);
+  const amount:amount = useAppSelector(state => state.pledge);
   const dispatch = useAppDispatch();
   const [pledge, setPledge] = useState<number | undefined>(pledgeProp);
   const [text, setText] = useState<number>(pledgeProp ? pledgeProp : 0);
   const [showThanks, setShowThanks] = useState(false);
+  const arrayAmount = Object.values(amount);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -86,7 +88,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
             <section className="pledge">
               {products.map((product, index) => (
                 <div key={index} className={
-                  product.amount === 0 ? "pledge__content__disable border "
+                  arrayAmount[index] === 0 ? "pledge__content__disable border "
                     : product.pledge !== pledge ? "pledge__content border " : "pledge__content__select border"}>
                   <div className="pledge__group select">
                     <div>
@@ -96,13 +98,13 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
                     </div>
                     <div>
                       <div className="pledge__group">
-                        <div onClick={product.amount === 0 ? () => { return; } : () => handleSelect(product.pledge)} className="pledge__content__checked">
+                        <div onClick={arrayAmount[index] === 0 ? () => { return; } : () => handleSelect(product.pledge)} className="pledge__content__checked">
                           <h3 className="pledge__content__title">{product.title}</h3>
                           <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
                         </div>
                         <div className="pledge">
                           <h4 className="pledge__number">
-                            {product.amount} <span className="text"> left</span>
+                            {arrayAmount[index]} <span className="text"> left</span>
                           </h4>
                         </div>
                       </div>

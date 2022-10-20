@@ -11,6 +11,11 @@ export type product ={
     text: string
     amount: number,
 }
+export type amount ={
+    amount25: number,
+    amount75: number,
+    amount200: number,
+}
 
 export type action = {
     type:string;
