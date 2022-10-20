@@ -56,7 +56,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
             in the world?
           </p>
           <div className="thisproject__pledge border">
-            <div>Pledge with no reward</div>
+            <div className="thisproject__checked">Pledge with no reward</div>
             <p className="text">
               Choose to support us without a reward if you simply believe in our
               project. As a backer, you will be signed up to receive product
@@ -70,12 +70,12 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
               <div key={index} className="pledge__content border">
                 <div className="pledge__group">
                   <div onClick={() => handleSelect(product.pledge)} className="pledge__content__checked">
-                    <h3 className="plege__content__title">{product.title}</h3>
-                    <p className="plege__content__subtitle">"Pledge ${product.pledge} or more"</p>
+                    <h3 className="pledge__content__title">{product.title}</h3>
+                    <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
                   </div>
                   <div className="pledge">
-                    <h4>
-                      {product.amount} <span className="h4--span"> left</span>
+                    <h4 className="pledge__number">
+                      {product.amount} <span className="text"> left</span>
                     </h4>
                   </div>
                 </div>
