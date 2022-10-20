@@ -56,8 +56,13 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
             in the world?
           </p>
           <div className="thisproject__pledge border">
-            <div className="thisproject__checked">Pledge with no reward</div>
-            <p className="text">
+            <div className="group">
+              <div className="thisproject__circle">
+                <div className="thisproject__circle-select"></div>
+              </div>
+              <div className="thisproject__checked">Pledge with no reward</div>
+            </div>
+            <p className="thisproject__text text">
               Choose to support us without a reward if you simply believe in our
               project. As a backer, you will be signed up to receive product
               updates via email.
@@ -68,21 +73,29 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
           <section className="pledge">
             {products.map((product, index) => (
               <div key={index} className={
-                product.amount === 0 ? "pledge__content__disable border " 
-               :product.pledge !== pledge ? "pledge__content border " : "pledge__content__select border"}>
-                <div className="pledge__group">
-                  <div  onClick={product.amount === 0 ? ()=>{return;}:() => handleSelect(product.pledge)} className="pledge__content__checked">
-                    <h3 className="pledge__content__title">{product.title}</h3>
-                    <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
+                product.amount === 0 ? "pledge__content__disable border "
+                  : product.pledge !== pledge ? "pledge__content border " : "pledge__content__select border"}>
+                <div className="pledge__group select">
+                  <div>
+                    <div className="pledge__content__circle">
+                      <div className={product.pledge !== pledge ? "" : "pledge__content__circle-select"}></div>
+                    </div>
                   </div>
-                  <div className="pledge">
-                    <h4 className="pledge__number">
-                      {product.amount} <span className="text"> left</span>
-                    </h4>
+                  <div>
+                    <div className="pledge__group">
+                      <div onClick={product.amount === 0 ? () => { return; } : () => handleSelect(product.pledge)} className="pledge__content__checked">
+                        <h3 className="pledge__content__title">{product.title}</h3>
+                        <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
+                      </div>
+                      <div className="pledge">
+                        <h4 className="pledge__number">
+                          {product.amount} <span className="text"> left</span>
+                        </h4>
+                      </div>
+                    </div>
+                    <p className="text">{product.text}</p>
                   </div>
                 </div>
-                <p className="text">{product.text}</p>
-
                 <div style={product.pledge !== pledge ? { display: "none" } : {}}>
                   <div className="pledge__line"></div>
                   <form className="pledge__form" onSubmit={(event) => handleSubmit(event)}>
