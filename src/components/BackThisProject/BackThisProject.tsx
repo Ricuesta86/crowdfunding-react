@@ -31,6 +31,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
       dispatch(backersIncremented({}));
       dispatch(pledgeDecremented({ pledge }));
       setShowThanks(true);
+      handleClose();
     }
   };
 
@@ -48,7 +49,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
   };
   return (
     <>
-      <Modal handleClose={handleClose}>
+      <Modal close handleClose={handleClose}>
         <div className="thisproject">
           <h3 className="thisproject__title">Back this project</h3>
           <p className="text">
@@ -77,7 +78,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
                   : product.pledge !== pledge ? "pledge__content border " : "pledge__content__select border"}>
                 <div className="pledge__group select">
                   <div>
-                    <div className="pledge__content__circle">
+                    <div className="pledge__content__circle" onClick={product.amount === 0 ? () => { return; } : () => handleSelect(product.pledge)}>
                       <div className={product.pledge !== pledge ? "" : "pledge__content__circle-select"}></div>
                     </div>
                   </div>
