@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import BackThisProject from '../BackThisProject/BackThisProject';
 
@@ -7,6 +7,15 @@ import './Mastercraft.scss';
 const Mastercraft = () => {
     const [show, setShow] = useState<boolean>(false);
     const [bookmark, setBookmark] = useState<boolean>(false);
+    const [matches, setMatches] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+      )
+    
+      useEffect(() => {
+        window
+        .matchMedia("(max-width: 414px)")
+        .addEventListener('change', e => setMatches( e.matches ));
+      }, []);
   
     const handleClose=()=>{
       setShow(false);
@@ -28,7 +37,7 @@ const Mastercraft = () => {
                 <h1 className="mastercraft__section__title">
                     Mastercraft Bamboo Monitor Riser
                 </h1>
-                <p className="text">
+                <p className="mastercraft__section__text text">
                     A beautiful & handcrafted monitor stand to reduce neck and eye
                     strain.
                 </p>
@@ -51,7 +60,7 @@ const Mastercraft = () => {
                                 />
                             </g>
                         </svg>
-                        Bookmark
+                        {!matches && 'Bookmark'}
                     </button>
                 </div>
             </section>
