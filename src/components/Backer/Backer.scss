@@ -25,4 +25,18 @@
             border-right: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.5);
         }
     }
+    @media(max-width: 414px){
+        padding: 50px 25px;
+        &__group{
+            flex-direction: column;
+
+            &__line{
+                margin: 25px 0;
+                width: 80px;
+                height: 0px;
+                border-right: none;
+                border-bottom: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.5);
+            }
+        }
+    }
 }
