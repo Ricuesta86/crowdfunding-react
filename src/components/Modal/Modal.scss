@@ -14,23 +14,25 @@
   &.width{
     width: 450px !important;
   }
-  &__container {
+  &__container,&__container-width {
     margin: 185px auto;
     padding: 30px 20px;
     border-radius: 10px;
     width: 730px;
     background-color: rgba($color: white, $alpha: 1);
     &-width{
-      margin: 185px auto;
-      padding: 30px 20px;
-      border-radius: 10px;
-      background-color: rgba($color: white, $alpha: 1);
       width: 450px;
     }
     &__close {
       float: right;
       font-size: 28px;
       font-weight: bold;
+    }
+  }
+  @media(max-width: 414px){
+    &__container {
+      width: 327px;
+      margin: 120px auto;
     }
   }
 }

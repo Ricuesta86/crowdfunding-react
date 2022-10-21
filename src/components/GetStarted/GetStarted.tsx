@@ -32,7 +32,7 @@ const GetStarted = () => {
                                 <h3 className='getstarted__title'>{product.title}</h3>
                                 <p className='getstarted__subtitle'>Pledge ${product.pledge} or more</p>
                             </div>
-                            <p className='text'>{product.text}
+                            <p className='getstarted__text text'>{product.text}
                             </p>
 
                             <div className='getstarted__group'>
