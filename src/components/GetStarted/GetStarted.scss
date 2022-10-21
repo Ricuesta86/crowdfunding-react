@@ -2,7 +2,7 @@
 
 .getstarted {
   margin-top: 40px;
-  &__enable {
+  &__enable,&__disable {
     margin: 25px 0;
     padding: 30px 20px;
     border-radius: 10px;
@@ -30,14 +30,26 @@
     font-weight: 700;
   }
   &__disable {
-    margin: 25px 0;
-    padding: 30px 20px;
-    border-radius: 10px;
     border: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.2);
     opacity: 0.5;
     &__btn{
       background-color: rgba($color: variables.$DarkGray, $alpha: 1) !important;
     }
   }
-
+  @media(max-width:414px){
+    &__enable,&__disable {
+      padding: 25px 20px;
+    }
+    &__group{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    &__title{
+      font-size: 1rem;
+    }
+    &__subtitle{
+      font-size: 1rem;
+    }
+  }
 }
