@@ -78,32 +78,23 @@
       padding: 0 25px;
       font-size: 14px;
     }
+    &__group{
+      padding: 25px 25px 40px;
+    }
     &__btn {
-      all: initial;
+      all: initial !important;
       & > svg > g > circle {
-        fill: initial;
+        fill: initial !important;
       }
       & > svg > g > path {
-        fill: #b1b1b1;
-      }
-      &:hover {
-        color: variables.$DarkGray;
-        transition: 0.3s all ease-in;
-        & > svg > g > circle {
-          fill: rgba($color: variables.$DarkGray, $alpha: 1);
-        }
-        & > svg > g > path {
-          fill: hsl(0, 0%, 73%);
-        }
+        fill: #b1b1b1 !important;
       }
       &.select {
-        color: variables.$DarkCyan;
-        transition: 0.3s all ease-in;
         & > svg > g > circle {
-          fill: rgba($color: variables.$DarkGray, $alpha: 1);
+          fill: variables.$DarkCyan !important;
         }
         & > svg > g > path {
-          fill: hsl(0, 0%, 73%);
+          fill: white !important;
         }
       }
     }
