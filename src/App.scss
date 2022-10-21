@@ -29,6 +29,12 @@
       width: 327px;      
       margin: -55px auto 0;
     }
+    &__about{
+      padding: 40px 25px;
+      &__text{
+        font-size: 14px !important;
+      }
+    }
     // &__title{
     //   font-size: 15px;
     // }
