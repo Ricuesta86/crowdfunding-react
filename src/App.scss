@@ -25,6 +25,13 @@
 
   @media (max-width: 414px) {
     width: 375px;
+    &__section{
+      width: 327px;      
+      margin: -55px auto 0;
+    }
+    // &__title{
+    //   font-size: 15px;
+    // }
   }
 
 
