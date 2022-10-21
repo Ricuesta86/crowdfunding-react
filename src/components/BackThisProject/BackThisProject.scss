@@ -7,7 +7,7 @@
     height: 30px;
     border: 1px solid rgba($color: variables.$DarkGray, $alpha: 0.5);
     border-radius: 50%;
-}
+  }
   &__title {
     font-size: 1.8rem;
   }
@@ -17,6 +17,22 @@
   }
   &__text{
     margin-left: 60px !important;
+  }
+  @media(max-width: 414px){
+    padding: 0;
+    &__title {
+      font-size: 1.2rem;
+    }
+    & > .text{
+      font-size: 14px !important;
+    }
+    &__text{
+      margin-left:0px !important;
+    }
+    &__checked {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
   }
 }
 .group{
