@@ -1,6 +1,5 @@
 @use "../../sass/variables";
 
-
 .mastercraft__section {
   display: flex;
   align-items: center;
@@ -28,20 +27,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; 
+    gap: 20px;
     padding: 0px 30px 0 0;
     border-radius: 50px;
     border: none;
     background-color: #f4f8f9;
-    color: variables.$DarkCyan;
+    color: variables.$DarkGray;
     font-weight: 700;
     cursor: pointer;
-    & > svg > g > circle {
-      fill: variables.$DarkCyan;
-    }
-    & > svg > g > path {
-      fill: white;
-    }
     &:hover {
       color: variables.$DarkGray;
       transition: 0.3s all ease-in;
@@ -53,35 +46,45 @@
       }
     }
     &.select {
-      color: variables.$DarkGray;
+      color: variables.$DarkCyan;
       transition: 0.3s all ease-in;
       & > svg > g > circle {
-        fill: rgba($color: variables.$DarkGray, $alpha: 1);
+        fill: variables.$DarkCyan;
       }
       & > svg > g > path {
-        fill: hsl(0, 0%, 73%);
+        fill: white;
+      }
+      &:hover {
+        color: variables.$DarkGray;
+        transition: 0.3s all ease-in;
+        & > svg > g > circle {
+          fill: rgba($color: variables.$DarkGray, $alpha: 1);
+        }
+        & > svg > g > path {
+          fill: hsl(0, 0%, 73%);
+        }
       }
     }
   }
 
-  @media(max-width: 414px){
-    &__title{
+  @media (max-width: 414px) {
+    &__title {
       font-size: 1.4rem;
       text-align: center;
     }
-    &__text{
+    &__text {
       margin: 5px 0 !important;
       text-align: center;
       padding: 0 25px;
       font-size: 14px;
     }
-    &__btn{
-      all:initial;
+    &__btn {
+      all: initial;
       & > svg > g > circle {
         fill: initial;
       }
       & > svg > g > path {
-        fill: #B1B1B1;
+        fill: #b1b1b1;
       }
       &:hover {
         color: variables.$DarkGray;
@@ -94,7 +97,7 @@
         }
       }
       &.select {
-        color: variables.$DarkGray;
+        color: variables.$DarkCyan;
         transition: 0.3s all ease-in;
         & > svg > g > circle {
           fill: rgba($color: variables.$DarkGray, $alpha: 1);
