@@ -30,7 +30,7 @@
     }
   }
   @media(max-width: 414px){
-    &__container {
+    &__container,&__container-width {
       width: 327px;
       margin: 120px auto;
       padding: 25px 20px;
