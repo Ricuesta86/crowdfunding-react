@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import api from "../../api";
 import { amount, product } from "../../type";
@@ -24,6 +24,15 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
   const [text, setText] = useState<number>(pledgeProp ? pledgeProp : 0);
   const [showThanks, setShowThanks] = useState(false);
   const arrayAmount = Object.values(amount);
+  const [matches, setMatches] = useState(
+    window.matchMedia("(max-width: 414px)").matches
+  )
+
+  useEffect(() => {
+    window
+    .matchMedia("(max-width: 414px)")
+    .addEventListener('change', e => setMatches( e.matches ));
+  }, []);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -102,13 +111,22 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
                           <h3 className="pledge__content__title">{product.title}</h3>
                           <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
                         </div>
+                        {!matches && (
                         <div className="pledge">
                           <h4 className="pledge__number">
                             {arrayAmount[index]} <span className="text"> left</span>
                           </h4>
                         </div>
+                        )}
                       </div>
                       <p className="text">{product.text}</p>
+                      {matches && (
+                        <div className="pledge">
+                          <h4 className="pledge__number">
+                            {arrayAmount[index]} <span className="text"> left</span>
+                          </h4>
+                        </div>
+                        )}
                     </div>
                   </div>
                   <div style={product.pledge !== pledge ? { display: "none" } : {}}>
