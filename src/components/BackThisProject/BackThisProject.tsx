@@ -17,8 +17,8 @@ type props = {
   pledgeProp: number | undefined;
 };
 const BackThisProject = ({ handleClose, pledgeProp }: props) => {
-  const [products, setProducts] = useState<product[]|[]>(api.data.list);
-  const amount:amount = useAppSelector(state => state.pledge);
+  const [products, setProducts] = useState<product[] | []>(api.data.list);
+  const amount: amount = useAppSelector(state => state.pledge);
   const dispatch = useAppDispatch();
   const [pledge, setPledge] = useState<number | undefined>(pledgeProp);
   const [text, setText] = useState<number>(pledgeProp ? pledgeProp : 0);
@@ -30,16 +30,16 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
 
   useEffect(() => {
     window
-    .matchMedia("(max-width: 414px)")
-    .addEventListener('change', e => setMatches( e.matches ));
+      .matchMedia("(max-width: 414px)")
+      .addEventListener('change', e => setMatches(e.matches));
   }, []);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    let nPledge=Number(event.target.pledge.value);
-    let nPrice=Number(event.target.price.value);
+    let nPledge = Number(event.target.pledge.value);
+    let nPrice = Number(event.target.price.value);
     if (nPledge >= nPrice) {
-      dispatch(backedAdded({ backed:nPledge }));
+      dispatch(backedAdded({ backed: nPledge }));
       dispatch(backersIncremented({}));
       dispatch(pledgeDecremented({ pledge }));
       // handleClose();
@@ -60,7 +60,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
     setText(event.target.value);
   };
 
-  const handleNoReward = () =>{
+  const handleNoReward = () => {
     dispatch(backersIncremented({}));
     setShowThanks(true);
   }
@@ -80,7 +80,7 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
               in the world?
             </p>
             <div className="thisproject__pledge border">
-              <div className="group" onClick={()=>handleNoReward()}>
+              <div className="group" onClick={() => handleNoReward()}>
                 <div className="thisproject__circle">
                   <div className="thisproject__circle-select"></div>
                 </div>
@@ -112,23 +112,27 @@ const BackThisProject = ({ handleClose, pledgeProp }: props) => {
                           <p className="pledge__content__subtitle">Pledge ${product.pledge} or more</p>
                         </div>
                         {!matches && (
-                        <div className="pledge">
-                          <h4 className="pledge__number">
-                            {arrayAmount[index]} <span className="text"> left</span>
-                          </h4>
-                        </div>
+                          <div className="pledge">
+                            <h4 className="pledge__number">
+                              {arrayAmount[index]} <span className="text"> left</span>
+                            </h4>
+                          </div>
                         )}
                       </div>
-                      <p className="text">{product.text}</p>
-                      {matches && (
-                        <div className="pledge">
-                          <h4 className="pledge__number">
-                            {arrayAmount[index]} <span className="text"> left</span>
-                          </h4>
-                        </div>
-                        )}
+                      {!matches && <p className="text">{product.text}</p>}
                     </div>
                   </div>
+                  {matches && (
+                    <>
+                      <p className="text">{product.text}</p>
+                      <div className="pledge">
+                        <h4 className="pledge__number">
+                          {arrayAmount[index]} <span className="text"> left</span>
+                        </h4>
+                      </div>
+                    </>
+
+                  )}
                   <div style={product.pledge !== pledge ? { display: "none" } : {}}>
                     <div className="pledge__line"></div>
                     <form className="pledge__form" onSubmit={(event) => handleSubmit(event)}>
