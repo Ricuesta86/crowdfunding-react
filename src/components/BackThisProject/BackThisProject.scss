@@ -183,5 +183,19 @@
         margin: 5px 0;
       }
     }
+    &__form {
+      flex-direction: column;
+      & > .text{
+        font-size: 14px;
+        margin: 0 0 20px;
+      }
+      &__currency-code {
+        top: 13px;
+      }
+      &__currency-input {
+        margin-right: 0px;
+        padding: 13px 20px 13px 50px;
+      }
+    }
   }
 }

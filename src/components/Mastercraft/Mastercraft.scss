@@ -78,11 +78,16 @@
       padding: 0 25px;
       font-size: 14px;
     }
-    &__group{
+    &__group {
       padding: 5px 25px 40px;
+      & > .btn {
+        padding: 18px 50px !important;
+      }
     }
     &__btn {
+      align-items: center;
       all: initial !important;
+
       & > svg > g > circle {
         fill: initial !important;
       }
