@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import Modal from "../Modal/Modal";
 import "./Header.scss";
+
 const Header = () => {
   const [show, setShow] = useState<boolean>(true);
 
-  const handleTogget = () => {};
+  const handleClose = () => {
+    setShow(!show);
+  }
 
   return (
     <header className="header">
-      <nav className={show ? "header__navbar" : "header__navbar close"}>
+      {show ? <nav className="header__navbar">
         <div className="header__navbar__logo">
           <a href="#">
             <img
@@ -31,33 +35,31 @@ const Header = () => {
           </ul>
           <img
             className="header__navbar__menu-hamburger"
-            src={
-              show
-                ? "./images/icon-hamburger.svg"
-                : "./images/icon-close-menu.svg"
-            }
+            src={"./images/icon-hamburger.svg"}
             alt="Icon Menu"
             onClick={() => setShow(!show)}
           />
-          {!show ? (
-            <div className="header__navbar__menu__modal">
-              <div className="header__navbar__menu__modal--modal">
-                <ul className="header__navbar__menu__modal--ul">
-                  <li className="-header__navbar__menu__modal-li">
+        </div>
+      </nav>
+        : (
+          <Modal handleClose={handleClose} menu >
+            <div className="header__menu__modal">
+              <div className="header__menu__modal--modal">
+                <ul className="header__menu__modal--ul">
+                  <li className="header__menu__modal--li">
                     <a href="#">About</a>
                   </li>
-                  <li className="header__navbar__menu__modal--li">
+                  <li className="header__menu__modal--li">
                     <a href="#">Discover</a>
                   </li>
-                  <li className="header__navbar__menu__modal--li">
+                  <li className="header__menu__modal--li">
                     <a href="#">Get Started</a>
                   </li>
                 </ul>
               </div>
             </div>
-          ) : null}
-        </div>
-      </nav>
+          </Modal>
+        )}
     </header>
   );
 };

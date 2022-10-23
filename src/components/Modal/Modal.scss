@@ -14,7 +14,7 @@
   &.width{
     width: 450px !important;
   }
-  &__container,&__container-width {
+  &__container,&__container-width,&__container-menu {
     margin: 185px auto;
     padding: 30px 20px;
     border-radius: 10px;
@@ -23,6 +23,9 @@
     &-width{
       width: 450px;
     }
+    &-menu{
+      margin: 5px auto !important;
+    }
     &__close {
       float: right;
       font-size: 28px;
@@ -30,10 +33,21 @@
     }
   }
   @media(max-width: 414px){
+    &__navbar {
+      // margin: 0 10px;
+      padding: 30px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
     &__container,&__container-width {
       width: 327px;
       margin: 120px auto;
       padding: 25px 20px;
+    }
+    &__container-menu {
+      width: 327px;
+      padding: 0 ;
     }
   }
 }
